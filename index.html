@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Тест на реакцию</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Тест на реакцию</h1>
+            <div class="settings">
+                <label for="attemptsInput">Количество попыток:</label>
+                <input type="number" id="attemptsInput" min="1" max="100" value="5">
+                <div class="quick-buttons">
+                    <button data-attempts="5">5</button>
+                    <button data-attempts="10">10</button>
+                    <button data-attempts="15">15</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Осталось:</span>
+                    <span class="stat-value" id="attemptsLeft">5</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Среднее время:</span>
+                    <span class="stat-value" id="averageTime">—</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Завершено:</span>
+                    <span class="stat-value" id="completedAttempts">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="testArea" class="test-area idle">
+            <div class="message" id="message">Нажмите, чтобы начать</div>
+            <div class="submessage" id="submessage">Можно использовать пробел</div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
