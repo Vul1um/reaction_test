@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'result':
                 const lastTime = reactionTimes[reactionTimes.length - 1];
                 if (attemptsLeft === 0) {
-                    const sum = reactionTimes.reduce((a, b) => a + b, 0);
-                    const avg = Math.round(sum / reactionTimes.length);
-                    messageEl.textContent = 'Тест завершён!';
-                    submessageEl.textContent = `Последнее: ${lastTime} мс | Среднее: ${avg} мс. Нажмите, чтобы начать заново.`;
+                    // Тест завершён - показываем ПОСЛЕДНИЙ результат в синем окне
+                    messageEl.textContent = `${lastTime} мс`;
+                    submessageEl.textContent = 'Тест завершён! Нажмите, чтобы начать заново.';
                 } else {
+                    // Промежуточный результат
                     messageEl.textContent = `${lastTime} мс`;
                     submessageEl.textContent = 'Нажмите, чтобы продолжить';
                 }
