@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const attemptsInput = document.getElementById('attemptsInput');
     const quickButtons = document.querySelectorAll('.quick-buttons button');
     const attemptsLeftEl = document.getElementById('attemptsLeft');
+    const lastTimeEl = document.getElementById('lastTime');
     const averageTimeEl = document.getElementById('averageTime');
     const completedAttemptsEl = document.getElementById('completedAttempts');
     const testArea = document.getElementById('testArea');
@@ -39,9 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reactionTimes.length > 0) {
             const sum = reactionTimes.reduce((a, b) => a + b, 0);
             const avg = Math.round(sum / reactionTimes.length);
+            const last = reactionTimes[reactionTimes.length - 1];
+            
             averageTimeEl.textContent = `${avg} мс`;
+            lastTimeEl.textContent = `${last} мс`;
         } else {
             averageTimeEl.textContent = '—';
+            lastTimeEl.textContent = '—';
         }
     }
 
@@ -68,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const sum = reactionTimes.reduce((a, b) => a + b, 0);
                     const avg = Math.round(sum / reactionTimes.length);
                     messageEl.textContent = 'Тест завершён!';
-                    submessageEl.textContent = `Среднее время: ${avg} мс. Нажмите, чтобы начать заново.`;
+                    submessageEl.textContent = `Последнее: ${lastTime} мс | Среднее: ${avg} мс. Нажмите, чтобы начать заново.`;
                 } else {
                     messageEl.textContent = `${lastTime} мс`;
                     submessageEl.textContent = 'Нажмите, чтобы продолжить';
@@ -81,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Сброс при изменении поля ввода (при потере фокуса или нажатии Enter)
+    // Сброс при изменении поля ввода
     attemptsInput.addEventListener('change', init);
     attemptsInput.addEventListener('blur', init);
 
